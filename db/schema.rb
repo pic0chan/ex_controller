@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20170730103032) do
 
   create_table "switches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "hostname"
-    t.string   "manage_ipv4addr"
+    t.integer  "manage_ipv4addr",              unsigned: true
     t.string   "config_url"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
