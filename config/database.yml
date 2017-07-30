@@ -2,20 +2,22 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password:
   socket: /var/lib/mysql/mysql.sock
 
 development:
   <<: *default
-  database: ex_controller_development
+  database: ex_con_dev
+  username: ex_con_dev
+  password: "password"
 
 test:
   <<: *default
-  database: ex_controller_test
+  database: ex_con_test
+  username: ex_con_test
+  password: "password"
 
 production:
   <<: *default
-  database: ex_controller_production
-  username: ex_controller
+  database: ex_con_prd
+  username: ex_con_prd
   password: <%= ENV['EX_CONTROLLER_DATABASE_PASSWORD'] %>
