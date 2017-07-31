@@ -1,0 +1,2 @@
+class SwitchPort < ApplicationRecord
+end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hostname_id: MyString
+  port_num: 1
+  speed: MyString
+  vlan: 1
+  mode: MyString
+  link_status: false
+
+two:
+  hostname_id: MyString
+  port_num: 1
+  speed: MyString
+  vlan: 1
+  mode: MyString
+  link_status: false

@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170730103032) do
+ActiveRecord::Schema.define(version: 20170731163317) do
+
+  create_table "switch_ports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "hostname_id"
+    t.integer  "port_num"
+    t.string   "speed"
+    t.integer  "vlan"
+    t.string   "mode"
+    t.boolean  "link_status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["hostname_id", "port_num", "speed"], name: "index_switch_ports_on_hostname_id_and_port_num_and_speed", unique: true, using: :btree
+  end
 
   create_table "switches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "hostname"
