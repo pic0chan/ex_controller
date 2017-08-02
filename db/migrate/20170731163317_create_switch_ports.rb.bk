@@ -1,0 +1,16 @@
+class CreateSwitchPorts < ActiveRecord::Migration[5.0]
+  def change
+    create_table :switch_ports do |t|
+      t.references :switches, foreign_key: true
+      t.integer :port_num
+      t.string :speed
+      t.integer :vlan
+      t.string :mode
+      t.boolean :link_status
+
+      t.index [:switches, :port_num, :speed], :unique => true
+
+      t.timestamps
+    end
+  end
+end

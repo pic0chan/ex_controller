@@ -10,18 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731163317) do
+ActiveRecord::Schema.define(version: 20170802145004) do
+
+  create_table "internet_lines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "line_name"
+    t.integer  "vlan"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "switch_ports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "hostname_id"
+    t.integer  "switch_id"
     t.integer  "port_num"
-    t.string   "speed"
-    t.integer  "vlan"
+    t.integer  "speed"
+    t.integer  "internet_line_id"
     t.string   "mode"
     t.boolean  "link_status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["hostname_id", "port_num", "speed"], name: "index_switch_ports_on_hostname_id_and_port_num_and_speed", unique: true, using: :btree
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["internet_line_id"], name: "index_switch_ports_on_internet_line_id", using: :btree
+    t.index ["switch_id", "port_num", "speed"], name: "index_switch_ports_on_switch_id_and_port_num_and_speed", unique: true, using: :btree
+    t.index ["switch_id"], name: "index_switch_ports_on_switch_id", using: :btree
   end
 
   create_table "switches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -32,4 +41,6 @@ ActiveRecord::Schema.define(version: 20170731163317) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "switch_ports", "internet_lines"
+  add_foreign_key "switch_ports", "switches"
 end
