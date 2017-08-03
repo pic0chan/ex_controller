@@ -2,10 +2,10 @@
 
 one:
   hostname: MyString
-  ipv4_addr: MyString
-  config_file: MyString
+  manage_ipv4addr: MyString
+  config_url: MyString
 
 two:
   hostname: MyString
-  ipv4_addr: MyString
-  config_file: MyString
+  manage_ipv4addr: MyString
+  config_url: MyString

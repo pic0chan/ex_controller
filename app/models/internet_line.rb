@@ -1,0 +1,2 @@
+class InternetLine < ApplicationRecord
+end
